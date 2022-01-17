@@ -1,6 +1,10 @@
 # customervault-backend
 
-## Installation without Docker -> Run App -> Commit with `pre-commit`
+## Getting started
+
+- Installation without Docker
+- Run App
+- Commit with `pre-commit`
 
 #### 1. Clone this repo & change working dir to backend
 
@@ -37,6 +41,13 @@
 
 #### 11. Build
     $ poetry build -f sdist
+#### 12. Before committing ensure changes will be accepted in CI/CD
+
+    $ poetry run flake8 .
+    $ poetry run isort .
+    $ poetry run mypy .
+    $ poetry run black .
+    $ poetry run pre-commit run --all-files
 ## License
 
 This project is licensed under the terms of the MIT license.
