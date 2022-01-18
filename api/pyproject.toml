@@ -5,13 +5,10 @@ description = ""
 
 authors = ["Jon Whittlestone <dev@howapped.com>"]
 
-packages = [
-    { include="src", from="."}
-]
-
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.67.0"
+gunicorn = "^20.0.4"
 uvicorn = "^0.17.0"
 pydantic = {extras = ["dotenv"], version = "^1.9.0"}
 httpx = "^0.21.3"
@@ -27,6 +24,7 @@ mypy = "^0.790"
 isort = "^5.0"
 pre-commit = "^2.8.2"
 black = "^21.10b0"
+coverage = "^6.2"
 
 
 [build-system]
@@ -34,5 +32,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-start = 'src.main:start'
 test = 'tests.main:start'

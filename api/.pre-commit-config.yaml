@@ -17,7 +17,7 @@ repos:
         name: black
         language: python
         entry: black
-        args: [ --config=backend/pyproject.toml, --diff, backend/]
+        args: [ --config=api/pyproject.toml, --diff, api/]
         types: [ python ]
 
   - repo: https://gitlab.com/pycqa/flake8
@@ -26,7 +26,7 @@ repos:
       - id: flake8
         name: flake8
         language: python
-        entry: bash -c "cd backend && flake8"
+        entry: bash -c "cd api && flake8"
         types: [ python ]
 
 

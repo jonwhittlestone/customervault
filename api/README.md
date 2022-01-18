@@ -1,4 +1,4 @@
-# customervault-backend
+# customervault-api
 
 ## Getting started
 
@@ -8,7 +8,7 @@
 
 #### 1. Clone this repo & change working dir to backend
 
-    $ cd ./backend
+    $ cd ./api
 
 #### 2. Install [poetry](https://github.com/python-poetry/poetry#installation)
 
@@ -30,13 +30,12 @@
     $ poetry run coverage html
 
 #### 10. Run application locally
+```shell
+poetry run uvicorn src.main:app --reload --host localhost --port 7998
+```
 
-    $ poetry run start
-    # Or another way
-    $ uvicorn src.main:app --port 7998 --reload
-
-- API available at http:///localhost:7998/
-- Swagger UI docs available at http://localhost:7998/docs
+- API available at http:///127.0.0.1:7998/
+- Swagger UI docs available at http:///127.0.0.1/docs
 - ReDoc docs available at http://localhost:7998/redoc
 
 #### 11. Build
@@ -48,6 +47,45 @@
     $ poetry run mypy .
     $ poetry run black .
     $ poetry run pre-commit run --all-files
+
+## Docker
+
+The Dockerfile uses multi-stage builds to run lint and test stages before building the production stage. If linting or testing fails the build will fail.
+
+Build `development` stage image with:
+
+```shell
+docker build --network host --tag customervault-api --file docker/Dockerfile . --target development
+```
+
+Build image with:
+
+```shell
+docker build --network host --tag customervault-api --file docker/Dockerfile .
+```
+
+Run the container
+
+```shell
+docker run \
+    -p 7998:7998 \
+    customervault-api:latest
+```
+
+Run the container tests
+
+```shell
+
+```
+
+Get a shell inside the container with:
+
+```shell
+docker run -it customervault-api:latest /bin/bash
+```
+
+
+
 ## License
 
 This project is licensed under the terms of the MIT license.
