@@ -4,7 +4,7 @@ import pytest
 from asgi_lifespan import LifespanManager
 from httpx import AsyncClient
 
-from src.main import app
+from main import app
 
 
 @pytest.fixture(scope="session")
