@@ -1,7 +1,7 @@
 .PHONY: tests
 
-install:
+api-install:
 	poetry install && exit;
 
-tests:
+api-tests:
 	python -m pytest app/tests --cov-config=.coveragerc --cov=./app --maxfail=1 --tb=short
