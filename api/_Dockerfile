@@ -50,7 +50,7 @@ COPY --from=builder-base $POETRY_HOME $POETRY_HOME
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 
 # Copying in our entrypoint
-COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 # venv already has runtime deps installed we get a quicker install
@@ -67,16 +67,15 @@ CMD ["uvicorn", "--reload", "--host=0.0.0.0", "--port=7998", "src.main:app"]
 
 # 'lint' stage runs black and isort
 # running in check mode means build will fail if any linting errors occur
-FROM development AS lint
-RUN black --config ./pyproject.toml --check src tests
+# FROM development AS lint
+# RUN black --config ./pyproject.toml --check src tests
 # RUN isort --settings-path ./pyproject.toml --recursive --check-only
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 
 # 'test' stage runs our unit tests with pytest and
 # coverage.  Build will fail if test coverage is under 95%
 FROM development AS test
-RUN coverage run --rcfile ./pyproject.toml -m pytest ./tests
-RUN coverage report --fail-under 80
+RUN coverage run --rcfile ./pyproject.toml -m pytest ./tests && coverage report --fail-under 80
 
 # 'production' stage uses the clean 'python-base' stage and copyies
 # in only our runtime deps that were installed in the 'builder-base'
@@ -84,19 +83,24 @@ FROM python-base as production
 ENV FASTAPI_ENV=production
 
 COPY --from=builder-base $VENV_PATH $VENV_PATH
-COPY ./docker/gunicorn_conf.py /gunicorn_conf.py
+COPY ./gunicorn_conf.py /gunicorn_conf.py
 
-COPY ./docker/docker-entrypoint.sh /docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 # Create user
 RUN groupadd -g 1500 jon && \
     useradd -m -u 1500 -g jon jon
 
-COPY --chown=jon:jon ./.env ./.env
+COPY ./start.sh /start.sh
+RUN chmod +x /start.sh
+# COPY --chown=jon:jon ./.env ./.env
 COPY --chown=jon:jon ./src /app/src
 USER jon
 WORKDIR /app
 
-ENTRYPOINT /docker-entrypoint.sh $0 $@
-CMD [ "gunicorn", "--worker-class uvicorn.workers.UvicornWorker", "--config /gunicorn_conf.py", "src.main:app"]
+ENTRYPOINT ./docker-entrypoint.sh $0 $@
+# CMD [ "gunicorn", "--worker-class uvicorn.workers.UvicornWorker", "--config /gunicorn_conf.py", "src.main:app"]
+
+# CMD ["uvicorn", "--reload", "--host=0.0.0.0", "src.main:app"]
+CMD ["./start.sh"]

@@ -84,6 +84,34 @@ Get a shell inside the container with:
 docker run -it customervault-api:latest /bin/bash
 ```
 
+## Deploying to Heroku
+
+1. Log in to Heroku with Heroku CLI
+
+```shell
+heroku login
+```
+
+2. Log in to Container Registry
+
+```shell
+heroku container:login
+```
+
+3. With the image built (see above), push it to container registry
+```shell
+cd docker;
+heroku container:push web -a customervault-pd --context-path ..
+```
+
+4. And then release it
+
+```shell
+heroku container:release web -a customervault-pd
+```
+
+5.
+
 
 
 ## License

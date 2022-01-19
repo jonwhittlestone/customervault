@@ -17,7 +17,7 @@ repos:
         name: black
         language: python
         entry: black
-        args: [ --config=api/pyproject.toml, --diff, api/]
+        args: [ --config=api/src/pyproject.toml, --diff, api/]
         types: [ python ]
 
   - repo: https://gitlab.com/pycqa/flake8
