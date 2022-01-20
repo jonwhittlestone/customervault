@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests_linux:
+  test:
     strategy:
       fail-fast: false
       matrix:
