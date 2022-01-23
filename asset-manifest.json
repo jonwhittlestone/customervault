@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/customervault/static/css/main.d1b05096.chunk.css",
+    "main.js": "/customervault/static/js/main.18727413.chunk.js",
+    "main.js.map": "/customervault/static/js/main.18727413.chunk.js.map",
+    "runtime~main.js": "/customervault/static/js/runtime~main.8c247aa5.js",
+    "runtime~main.js.map": "/customervault/static/js/runtime~main.8c247aa5.js.map",
+    "static/js/2.ea490775.chunk.js": "/customervault/static/js/2.ea490775.chunk.js",
+    "static/js/2.ea490775.chunk.js.map": "/customervault/static/js/2.ea490775.chunk.js.map",
+    "static/js/3.d439ba6f.chunk.js": "/customervault/static/js/3.d439ba6f.chunk.js",
+    "static/js/3.d439ba6f.chunk.js.map": "/customervault/static/js/3.d439ba6f.chunk.js.map",
+    "index.html": "/customervault/index.html",
+    "precache-manifest.df016f6986e6ac56197df3acdaa3af7c.js": "/customervault/precache-manifest.df016f6986e6ac56197df3acdaa3af7c.js",
+    "service-worker.js": "/customervault/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/customervault/static/css/main.d1b05096.chunk.css.map",
+    "static/media/logo.svg": "/customervault/static/media/logo.fd7efd2c.svg"
+  }
+}
