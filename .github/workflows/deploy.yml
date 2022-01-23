@@ -46,7 +46,7 @@ jobs:
           npm ci
           npm run build --if-present
           npm test
-      - name: Deploy to Release branch
+      - name: Deploy to Public branch
         if: |
           github.ref == 'refs/heads/release' && github.event.repository.fork == false
         uses: peaceiris/actions-gh-pages@v3
