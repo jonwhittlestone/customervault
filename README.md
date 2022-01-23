@@ -21,6 +21,8 @@ A push or pull request to main will trigger running [API tests](https://github.c
 ## Deploy
 
 A push to [release branch](https://github.com/jonwhittlestone/customervault/tree/release) will trigger a [deploy API to PaaS and deploy to frontend](https://github.com/jonwhittlestone/customervault/blob/main/.github/workflows/deploy.yml) the static file hosting.
+
+> To use the GitHub action to deploy to gh-pages, please ensure you [create the required deploy key and secret key](https://github.com/marketplace/actions/github-pages-action#%EF%B8%8F-create-ssh-deploy-key) for [peaceiris/actions-gh-pages](https://github.com/marketplace/actions/github-pages-action)
 ## License
 
 This project is licensed under the terms of the MIT license.
