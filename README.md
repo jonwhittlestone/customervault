@@ -22,7 +22,13 @@ A push or pull request to main will trigger running [API tests](https://github.c
 
 A push to [release branch](https://github.com/jonwhittlestone/customervault/tree/release) will trigger a [deploy API to PaaS and deploy to frontend](https://github.com/jonwhittlestone/customervault/blob/main/.github/workflows/deploy.yml) the static file hosting.
 
-> To use the GitHub action to deploy to gh-pages, please ensure you [create the required deploy key and secret key](https://github.com/marketplace/actions/github-pages-action#%EF%B8%8F-create-ssh-deploy-key) for [peaceiris/actions-gh-pages](https://github.com/marketplace/actions/github-pages-action)
+To get github-pages functioning nicely with DNS:
+* Set your repo settings
+![](docs/screenshots/gh-pages.png)
+
+* Set your DNS CNAME and A record
+![](docs/screenshots/dns.png)
+
 ## License
 
 This project is licensed under the terms of the MIT license.
