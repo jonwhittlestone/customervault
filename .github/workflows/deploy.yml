@@ -46,10 +46,9 @@ jobs:
           npm ci
           npm run build --if-present
           npm test
-      - name: Deploy to gh-pages
-        if: |
-          github.ref == 'refs/heads/release' && github.event.repository.fork == false
-        working-directory: ./front
+      - name: Deploy with gh-pages
         run: |
-          npm run predeploy
-          npm run deploy
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
