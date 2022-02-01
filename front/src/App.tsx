@@ -9,7 +9,7 @@ const SignupForm = () => {
       alert(JSON.stringify(values, null, 2));
       axios({
           method: 'get',
-          url: 'http://customervault-production.herokuapp.com:7998/healthcheck',
+          url: 'http://customervault-production.herokuapp.com/healthcheck',
           data: JSON.stringify(values),
         }).then((r) => {
           // setSubmitting(false);
