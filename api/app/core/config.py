@@ -5,7 +5,7 @@ from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "customervault-prod"
-    BACKEND_CORS_ORIGINS: Optional[List[AnyHttpUrl]] = ["https://www.customervault.app"]
+    BACKEND_CORS_ORIGINS: Optional[List[AnyHttpUrl]] = ["https://customervault.app"]
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
