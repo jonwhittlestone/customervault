@@ -1,12 +1,23 @@
 import { useFormik } from 'formik';
 import React from 'react';
 import ReactDOM from "react-dom"
+import axios from "axios";
 
 const SignupForm = () => {
   const formik = useFormik({
     initialValues: { email: ""},
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      axios({
+          method: 'get',
+          url: 'http://customervault-production.herokuapp.com:7998/healthcheck',
+          data: JSON.stringify(values),
+        }).then((r) => {
+          // setSubmitting(false);
+          // resetForm();
+          // setStatus('sent');
+          console.log('Thanks!');
+        });
     }
   });
   return (
