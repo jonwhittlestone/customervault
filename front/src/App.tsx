@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import ReactDOM from "react-dom"
 import axios from "axios";
 
 const SignupForm = () => {
