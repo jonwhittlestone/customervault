@@ -7,7 +7,6 @@ from app.core.config import settings
 
 def get_application():
     _app = FastAPI(title=settings.PROJECT_NAME)
-
     _app.add_middleware(
         CORSMiddleware,
         allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
@@ -39,9 +38,9 @@ def read_root():
     return {"Hello": "Customer"}
 
 
-@app.get('/healthcheck', status_code=status.HTTP_200_OK)
+@app.get("/healthcheck", status_code=status.HTTP_200_OK)
 def perform_healthcheck():
-    '''
+    """
     Simple route for the GitHub Actions to healthcheck on.
 
     More info is available at:
@@ -58,5 +57,5 @@ def perform_healthcheck():
     {
       'healtcheck': 'Everything OK!'
     }
-    '''
-    return {'healthcheck': 'Everything OK!'}
+    """
+    return {"healthcheck": "Everything OK!"}

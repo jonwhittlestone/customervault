@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../clients/harpercollins/contacts/contact-frontend"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#29275A",
+			"titleBar.activeBackground": "#3A377E",
+			"titleBar.activeForeground": "#FBFBFD"
+		},
+		"jestrunner.jestCommand": "npm run test --"
+	}
+}
